@@ -69,6 +69,14 @@ pipeline {
             }
         }
     }
+     stage('Deploy to K8s Cluster'){
+            steps{
+                script{
+                    kubernatesDeploy(configs:"deployement/deployement.yaml","deployement/service.yaml")	
+               
+            }
+        }
+    }
     	
      post {
                 // If Maven was able to run the tests, even if some of the test
