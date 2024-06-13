@@ -44,14 +44,15 @@ pipeline {
             }
         
     	}
-        stage{
+        
+        stage('Docker Build'){
             steps{
                 script{
                 if(isUnix()){
-                sh "mvn -Dmaven.test.failure.ignore=true clean verify"
+                sh "docker build -t satyavedam123/spring-jenkins-ci-cd:latest ."
 				}	
                 else{
-                 bat "mvn -Dmaven.test.failure.ignore=true clean verify"
+                 bat "docker build -t satyavedam123/spring-jenkins-ci-cd:latest ."
                  }
                  }
             }
